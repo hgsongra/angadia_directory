@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'dashbord/search'
 
-  resources :contacts
-  resources :companies
+  resources :contacts, except: :show
+  resources :companies, except: :show
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

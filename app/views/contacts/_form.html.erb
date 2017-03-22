@@ -2,12 +2,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :number %>
-    <%= f.input :city %>
     <%= f.association :company %>
+    <%= f.input :city, placeholder: "Ex: Ahmedabad", required: true %>
+    <%= f.input :area, placeholder: "Ex: Vastrapur", required: true %>
+    <%= f.input :number, placeholder: "Ex: +919033231399", required: true %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Save", class: "btn btn-success" %>
+    <%= link_to contacts_path, class: "btn btn-info" do %>
+      <span class="glyphicon glyphicon-left-arrow"></span> Go Back
+    <%end%>
   </div>
 <% end %>

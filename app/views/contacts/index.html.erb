@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<h1> Contacts <%= link_to 'New Contact', new_contact_path, class: "btn btn-primary pull-right" %> </h1>
+<h1> Contacts 
+  <%= link_to new_contact_path, class: "btn btn-primary pull-right" do%> 
+    <span class="glyphicon glyphicon-plus"></span> New Contact
+  <%end%>
+</h1>
 <table class="table">
   <thead>
     <tr>
@@ -17,9 +19,15 @@
         <td><%= contact.number %></td>
         <td><%= contact.city %></td>
         <td><%= contact.company.name %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to edit_contact_path(contact), class: "btn btn-primary" do %>
+            <span class="glyphicon glyphicon-pencil"></span> Edit 
+          <%end%>
+          
+          <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+            <span class="glyphicon glyphicon-trash"></span> Remove 
+          <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>

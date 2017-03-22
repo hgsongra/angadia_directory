@@ -6,6 +6,9 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Save", class: "btn btn-success" %>
+		<%= link_to companies_path, class: "btn btn-info" do %>
+			<span class="glyphicon glyphicon-left-arrow"></span> Go Back
+		<%end%>
   </div>
 <% end %>

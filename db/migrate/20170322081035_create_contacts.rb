@@ -3,6 +3,7 @@ class CreateContacts < ActiveRecord::Migration[5.0]
     create_table :contacts do |t|
       t.string :number
       t.string :city
+      t.string :area
       t.references :company, foreign_key: true
 
       t.timestamps

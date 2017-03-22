@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170322081035) do
   create_table "contacts", force: :cascade do |t|
     t.string   "number"
     t.string   "city"
+    t.string   "area"
     t.integer  "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
