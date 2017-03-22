@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'dashbord/index'
+  root 'dashbord#index'
 
   get 'dashbord/search'
 
