@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.includes(:company).all
+    @contacts = Contact.includes(:company).all.page(params[:page])
   end
 
   # GET /contacts/new

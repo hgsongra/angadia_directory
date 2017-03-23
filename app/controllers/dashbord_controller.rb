@@ -1,7 +1,5 @@
 class DashbordController < ApplicationController
   def index
-  end
-
-  def search
+  	@contacts = Contact.includes(:company).where(city: params[:city]).page(params[:page])
   end
 end
