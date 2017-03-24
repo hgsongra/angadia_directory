@@ -56,6 +56,10 @@ class ContactsController < ApplicationController
     end
   end
 
+  def cities
+    render json: Contact.distinct.pluck(:city)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact

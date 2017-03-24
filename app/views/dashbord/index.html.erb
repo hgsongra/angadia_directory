@@ -1,35 +1,45 @@
 <h1 class="text-center">Welcome to Angadia phone book</h1>
-<h4 class="text-center">India's largest angadia telephone directory</h4>
+<h4 class="text-center">India's largest angadia telephone directory</h4><br><br>
+<div class="row col-md-8 col-md-offset-2">
 <%= form_tag(root_path, method: :get) do |f|%>
-  <div class="form-inputs">
-	<%= text_field_tag :city, "", required: true %>
-	<%= submit_tag("Search")%>
+  <div class="input-group">
+    <%= text_field_tag :city, "", required: true, class: "typeahead form-control", autocomplete: :off, placeholder: "Ex: Ahmedabad" %>
+    <span class="input-group-btn">
+      <%= submit_tag("Search", class: "btn btn-primary") %>
+    </span>
 	</div>
 <%end%>
+</div>
 
-<% if @contacts.present? %>
-	<h3>Search result for <strong><%= params[:city]%></strong></h3>
-	<table class="table">
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Area</th>
-      <th>City</th>
-      <th>Number</th>
-    </tr>
-  </thead>
+<div class="container">
+  <% if @contacts.present? %>
+    <div class="row col-md-12"><h3>Search result for <strong><%= params[:city]%></strong></h3></div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Area</th>
+          <th>City</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.company.name %></td>
+            <td><%= contact.area %></td>
+            <td><%= contact.city %></td>
+            <td><%= contact.number %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h4><%= paginate @contacts %></h4>
+  <%end%>
 
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.company.name %></td>
-        <td><%= contact.area %></td>
-        <td><%= contact.city %></td>
-        <td><%= contact.number %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<h4><%= paginate @contacts %></h4>
-<%end%>
-
+  <script type="text/javascript">
+      $.get("<%= cities_contacts_path%>", function(data){
+        $(".typeahead").typeahead({ source: data });
+      },'json');
+  </script>
+</div>
