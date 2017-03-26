@@ -2,9 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :company %>
+    <%= f.association :company, label: "Angadia" %>
     <%= f.input :city, placeholder: "Ex: Ahmedabad", required: true %>
-    <%= f.input :area, placeholder: "Ex: Vastrapur", required: true %>
     <%= f.input :number, placeholder: "Ex: +919033231399", required: true %>
   </div>
 
