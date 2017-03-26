@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   root 'dashbord#index'
   resources :contacts, except: :show do
   	collection do

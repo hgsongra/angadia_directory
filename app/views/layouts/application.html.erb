@@ -26,10 +26,20 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <%if admin_signed_in?%>
           <ul class="nav navbar-nav">
             <li><%= link_to "Angadia", companies_path %></li>
             <li><%= link_to "Contacts", contacts_path %></li>
           </ul>
+          <p class="navbar-text navbar-right">
+            Signed in as <%= current_admin.email %>   
+            <%= link_to "Logout", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %>
+          </p>
+          <%else%>
+            <p class="navbar-text navbar-right">
+              <%= link_to "Admin Login", new_admin_session_path, class: "btn btn-primary" %>
+            </p>
+          <%end%>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
