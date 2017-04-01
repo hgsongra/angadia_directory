@@ -46,7 +46,7 @@
     <div class="container">
     <%unless flash.empty?%>
       <div class="alert alert-warning" role="alert">
-        <%= notice %>
+        <%= notice || alert %>
       </div>
     <%end%>
     <%= yield %>

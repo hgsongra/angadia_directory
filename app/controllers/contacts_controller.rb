@@ -1,7 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:edit, :update, :destroy]
-  before_action :authenticate_admin!, except: :cities
-
+  before_action :authenticate_admin!
 
   # GET /contacts
   # GET /contacts.json
